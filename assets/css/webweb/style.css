@@ -1,0 +1,32 @@
+#webweb-center { 
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    text-align: justify;
+    font-family: palatino, georgia, verdana, arial, sans-serif;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px#888;
+    box-shadow: 0 0 10px #888;
+    width: 100%;
+    height: 100%;
+}
+
+#webweb-menu {
+    font-size: 10px;
+    padding: 15px;
+}
+
+#webweb-menu-left { 
+    float: left;
+}
+#webweb-menu-right {
+    float: right;
+    text-align: right;
+}
+
+#webweb-visualization-container > svg {
+    display: block;
+    margin: 0 auto;
+    clear: both;
+    border: solid 3px #f5f6fa;
+}

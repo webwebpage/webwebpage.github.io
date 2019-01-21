@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <title>multiple networks - webweb</title>
+  <link rel="stylesheet" href="/assets/css/just-the-docs.css">
+  
+  <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+    
+  <link rel="stylesheet" href="/assets/css/select_list.css">
+  <script type="text/javascript" src="/assets/js/select_list.js"></script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+  <div class="page-wrap">
+    <div class="side-bar">
+      <a href="" class="site-title fs-6 lh-tight">webweb</a>
+      <span class="fs-3"><button class="js-main-nav-trigger navigation-list-toggle btn btn-outline" type="button" data-text-toggle="Hide">Menu</button></span>
+      <div class="navigation main-nav js-main-nav">
+        <nav>
+  <ul class="navigation-list">
+    
+    
+      
+        
+          <li class="navigation-list-item active">
+
+            
+            <a href="/404.html" class="navigation-list-link"></a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+
+            
+            <a href="/" class="navigation-list-link">webweb</a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+
+            
+            <a href="/getting-started/" class="navigation-list-link">getting started</a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item active">
+
+            
+            <a href="/examples/" class="navigation-list-link">examples</a>
+            
+
+              
+              <ul class="navigation-list-child-list ">
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/display_from_edge_list.html" class="navigation-list-link">display from edge list</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/display_from_adjacency_matrix.html" class="navigation-list-link">display from adjacency matrix</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/display_from_weighted_edge_list.html" class="navigation-list-link">display from weighted edge list</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/display_from_weighted_adjacency_matrix.html" class="navigation-list-link">display from weighted adjacency matrix</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/add_node_names.html" class="navigation-list-link">add node names</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/add_node_metadata_binary.html" class="navigation-list-link">add node metadata: binary</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/add_node_metadata_categorical.html" class="navigation-list-link">add node metadata: categorical</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/add_node_metadata_scalar.html" class="navigation-list-link">add node metadata: scalar</a>
+                      
+                    </li>
+                  
+                
+                  
+                    <li class="navigation-list-item  active">
+                      
+                      <a href="/docs/examples/multiple_networks.html" class="navigation-list-link active">multiple networks</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/docs/examples/layers.html" class="navigation-list-link">layers</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+
+            
+            <a href="/documentation/" class="navigation-list-link">documentation</a>
+            
+
+              
+              <ul class="navigation-list-child-list ">
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/documentation/display/" class="navigation-list-link">display</a>
+                      
+                        
+                        <ul class="navigation-list-child-list">
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/attachWebwebToElementWithId.html" class="navigation-list-link">attachWebwebToElementWithId</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/charge.html" class="navigation-list-link">charge</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/colorBy.html" class="navigation-list-link">colorBy</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/colorPalette.html" class="navigation-list-link">colorPalette</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/freezeNodeMovement.html" class="navigation-list-link">freezeNodeMovement</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/gravity.html" class="navigation-list-link">gravity</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/height.html" class="navigation-list-link">height</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/hideMenu.html" class="navigation-list-link">hideMenu</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/invertBinaryColors.html" class="navigation-list-link">invertBinaryColors</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/invertBinarySizes.html" class="navigation-list-link">invertBinarySizes</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/linkLength.html" class="navigation-list-link">linkLength</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/linkStrength.html" class="navigation-list-link">linkStrength</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/nameToMatch.html" class="navigation-list-link">nameToMatch</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/networkLayer.html" class="navigation-list-link">networkLayer</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/networkName.html" class="navigation-list-link">networkName</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/radius.html" class="navigation-list-link">radius</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/scaleLinkOpacity.html" class="navigation-list-link">scaleLinkOpacity</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/scaleLinkWidth.html" class="navigation-list-link">scaleLinkWidth</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/showNodeNames.html" class="navigation-list-link">showNodeNames</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/sizeBy.html" class="navigation-list-link">sizeBy</a>
+                              </li>
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/width.html" class="navigation-list-link">width</a>
+                              </li>
+                            
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/documentation/python/" class="navigation-list-link">python</a>
+                      
+                        
+                        <ul class="navigation-list-child-list">
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/python/Web.html" class="navigation-list-link">Web</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/python/Web_show.html" class="navigation-list-link">Web.show</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/python/Web_save.html" class="navigation-list-link">Web.save</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/python/Web.networks.name.html" class="navigation-list-link">Web.networks.name</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/python/Web.networks.name_add_layer.html" class="navigation-list-link">Web.networks.name.add_layer</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                        </ul>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+
+            
+            <a href="/in-the-wild/" class="navigation-list-link">webweb in the wild</a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+
+            
+            <a href="/development/" class="navigation-list-link">development</a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+
+            
+            <a href="/contributing/" class="navigation-list-link">contributing</a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+
+            
+            <a href="/about/" class="navigation-list-link">about</a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+  </ul>
+</nav>
+
+      </div>
+      <footer role="contentinfo" class="site-footer">
+      </footer>
+    </div>
+    <div class="main-content-wrap">
+      <div class="page-header">
+        <div class="main-content">
+          
+          <div class="search js-search">
+            <div class="search-input-wrap">
+              <input type="text" class="js-search-input search-input" placeholder="Search webweb" aria-label="Search webweb" autocomplete="off">
+              <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg>
+            </div>
+            <div class="js-search-results search-results-wrap"></div>
+          </div>
+          
+          
+            <ul class="list-style-none text-small mt-md-1 mb-md-1 pb-4 pb-md-0 js-aux-nav aux-nav">
+              
+                <li class="d-inline-block my-0"><a href="https://github.com/dblarremore/webweb">webweb on GitHub</a></li>
+              
+            </ul>
+          
+        </div>
+      </div>
+      <div class="main-content">
+        
+          
+            <nav class="breadcrumb-nav">
+              <ol class="breadcrumb-nav-list">
+                
+                  <li class="breadcrumb-nav-list-item"><a href="/examples/">examples</a></li>
+                
+                <li class="breadcrumb-nav-list-item"><span>multiple networks</span></li>
+              </ol>
+            </nav>
+          
+        
+        <div class="page-content">
+          <link rel="stylesheet" href="/assets/css/webweb/style.css" />
+
+<script type="text/javascript" src="/assets/js/webweb/Blob.js"></script>
+
+<script type="text/javascript" src="/assets/js/webweb/colors.js"></script>
+
+<script type="text/javascript" src="/assets/js/webweb/d3.v5.min.js"></script>
+
+<script type="text/javascript" src="/assets/js/webweb/FileSaver.min.js"></script>
+
+<div id="example-visualization" style="width: 100%"><br /></div>
+<script type="text/javascript">
+    var wwdata = {"display":{"colorBy":"texture","networkName":"starfish","nodes":{"0":{"hunger":4,"name":"dane"},"1":{"hunger":9,"name":"sebastian"},"2":{"hunger":2,"name":"manny"},"3":{"hunger":4,"name":"brock"},"4":{"hunger":12.1,"name":"ted"},"5":{"hunger":5,"name":"donnie"}},"sizeBy":"hunger"},"networks":{"snake":{"layers":[{"edgeList":[[0,1],[1,2],[2,3],[3,4],[4,5]],"metadata":null,"nodes":{"0":{"isHead":false},"1":{"isHead":false},"2":{"isHead":false},"3":{"isHead":false},"4":{"isHead":false},"5":{"isHead":true}}}]},"starfish":{"layers":[{"edgeList":[[0,1],[0,2],[0,3],[0,4],[0,5]],"metadata":null,"nodes":{"0":{"power":1,"texture":"gooey"},"1":{"power":3,"texture":"fishy"},"2":{"power":3.8,"texture":"chewy"},"3":{"power":0.2,"texture":"crunchy"},"4":{"power":1,"texture":"chewy"},"5":{"power":3.1415,"texture":"gooey"}}}]}},"title":"webweb"};
+    wwdata.display.attachWebwebToElementWithId = "example-visualization";
+    
+        wwdata.display.w = 200;
+        wwdata.display.h = 200;
+    
+</script>
+
+<p><br />
+<script type="text/javascript" src="/assets/js/webweb/webweb.v5.js"></script></p>
+
+<p>you can give webweb more than one network and toggle between those networks with the up and down arrow keys.</p>
+
+<p>showing: 
+<span class="custom-dropdown">
+    <select onchange="changeCodeDisplay(this, 'example-code-switcher')">
+            <option value="python">python</option>
+            <option value="python (networkx)">python (networkx)</option>
+            <option value="matlab">matlab</option>
+            <option value="json">json</option></select>
+</span></p>
+
+<div class="select-code-block example-code-switcher python-code-block select-code-block-visible"></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">webweb</span> <span class="kn">import</span> <span class="n">Web</span>
+
+<span class="c1"># define the node names and a hunger metadata attribute to appear in all networks
+</span><span class="n">web</span> <span class="o">=</span> <span class="n">Web</span><span class="p">(</span>
+    <span class="n">display</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'nodes'</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="mi">0</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'dane'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">1</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'sebastian'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">2</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'manny'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">3</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'brock'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">4</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'ted'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mf">12.1</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">5</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'donnie'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1"># add a 'snake' network
+</span><span class="n">web</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">snake</span><span class="p">(</span>
+    <span class="n">adjacency</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>
+    <span class="n">nodes</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">0</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'isHead'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">1</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'isHead'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">2</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'isHead'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">3</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'isHead'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">4</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'isHead'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">5</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'isHead'</span> <span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1"># add a 'starfish' network
+</span><span class="n">web</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">starfish</span><span class="p">(</span>
+    <span class="n">adjacency</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>
+    <span class="n">nodes</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">0</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'texture'</span> <span class="p">:</span> <span class="s">'gooey'</span><span class="p">,</span>
+            <span class="s">'power'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">1</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'texture'</span> <span class="p">:</span> <span class="s">'fishy'</span><span class="p">,</span>
+            <span class="s">'power'</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">2</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'texture'</span> <span class="p">:</span> <span class="s">'chewy'</span><span class="p">,</span>
+            <span class="s">'power'</span> <span class="p">:</span> <span class="mf">3.8</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">3</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'texture'</span> <span class="p">:</span> <span class="s">'crunchy'</span><span class="p">,</span>
+            <span class="s">'power'</span> <span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">4</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'texture'</span> <span class="p">:</span> <span class="s">'chewy'</span><span class="p">,</span>
+            <span class="s">'power'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="mi">5</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s">'texture'</span> <span class="p">:</span> <span class="s">'gooey'</span><span class="p">,</span>
+            <span class="s">'power'</span> <span class="p">:</span> <span class="mf">3.1415</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># display the `starfish` network first
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">networkName</span> <span class="o">=</span> <span class="s">'starfish'</span>
+
+<span class="c1"># we'll compute node color by the `texture` attribute
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">colorBy</span> <span class="o">=</span> <span class="s">'texture'</span>
+
+<span class="c1"># we'll compute node size by the `hunger` attribute
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">sizeBy</span> <span class="o">=</span> <span class="s">'hunger'</span>
+
+<span class="c1"># show the visualization
+</span><span class="n">web</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="select-code-block example-code-switcher python_networkx-code-block"></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">webweb</span> <span class="kn">import</span> <span class="n">Web</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="n">nx</span>
+
+<span class="c1"># define the node names and a hunger metadata attribute to appear in all networks
+</span><span class="n">web</span> <span class="o">=</span> <span class="n">Web</span><span class="p">(</span>
+    <span class="n">display</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'nodes'</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="mi">0</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'dane'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">1</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'sebastian'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">2</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'manny'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">3</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'brock'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">4</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'ted'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mf">12.1</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="mi">5</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s">'name'</span> <span class="p">:</span> <span class="s">'donnie'</span><span class="p">,</span>
+                <span class="s">'hunger'</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">snake</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">snake</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="n">snake</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'isHead'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">snake</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'isHead'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">snake</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">'isHead'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">snake</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s">'isHead'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">snake</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s">'isHead'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">snake</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s">'isHead'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c1"># add the 'snake' network
+</span><span class="n">web</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">snake</span><span class="p">(</span><span class="n">nx_G</span><span class="o">=</span><span class="n">snake</span><span class="p">)</span>
+
+<span class="n">starfish</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'texture'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gooey'</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'power'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'texture'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'fishy'</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'power'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">'texture'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'chewy'</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'power'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.8</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s">'texture'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'crunchy'</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'power'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s">'texture'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'chewy'</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'power'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s">'texture'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gooey'</span>
+<span class="n">starfish</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'power'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.1415</span>
+
+<span class="c1"># add the 'starfish' network
+</span><span class="n">web</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">starfish</span><span class="p">(</span><span class="n">nx_G</span><span class="o">=</span><span class="n">starfish</span><span class="p">)</span>
+
+<span class="c1"># display the `starfish` network first
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">networkName</span> <span class="o">=</span> <span class="s">'starfish'</span>
+
+<span class="c1"># we'll compute node color by the `hunger` attribute
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">colorBy</span> <span class="o">=</span> <span class="s">'hunger'</span>
+
+<span class="c1"># we'll compute node size by the `isHead` attribute
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">sizeBy</span> <span class="o">=</span> <span class="s">'isHead'</span>
+
+<span class="c1"># show the visualization
+</span><span class="n">web</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="select-code-block example-code-switcher matlab-code-block"></div>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% set some node names and a metadata attribute (hunger) to appear for all</span>
+<span class="c1">% of the networks that we will display. Since these metadata attributes</span>
+<span class="c1">% apply globally, we put them under ww.display</span>
+<span class="n">ww</span><span class="o">.</span><span class="nb">display</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'dane'</span><span class="p">,</span><span class="s1">'sebastian'</span><span class="p">,</span><span class="s1">'manny'</span><span class="p">,</span><span class="s1">'brock'</span><span class="p">,</span><span class="s1">'ted'</span><span class="p">,</span><span class="s1">'donnie'</span><span class="p">};</span>
+<span class="n">ww</span><span class="o">.</span><span class="nb">display</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">hunger</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">12.1</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+
+<span class="c1">% define a network called snake</span>
+<span class="n">ww</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">snake</span><span class="o">.</span><span class="n">edgeList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">;</span> <span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span>
+<span class="n">ww</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">snake</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">isHead</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
+
+<span class="c1">% define another called starfish</span>
+<span class="n">ww</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">starfish</span><span class="o">.</span><span class="n">edgeList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span>
+<span class="n">ww</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">starfish</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">texture</span><span class="o">.</span><span class="n">values</span><span class="o">=</span><span class="p">{</span><span class="s1">'gooey'</span><span class="p">,</span><span class="s1">'fishy'</span><span class="p">,</span><span class="s1">'chewy'</span><span class="p">,</span><span class="k">...</span>
+    <span class="s1">'crunchy'</span><span class="p">,</span><span class="s1">'chewy'</span><span class="p">,</span><span class="s1">'gooey'</span><span class="p">};</span>
+<span class="n">ww</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">starfish</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="nb">power</span><span class="o">.</span><span class="n">values</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">3.1415</span><span class="p">};</span>
+
+<span class="c1">% BONUS force the starfish network to display first by default</span>
+<span class="n">ww</span><span class="o">.</span><span class="nb">display</span><span class="o">.</span><span class="n">networkName</span> <span class="o">=</span> <span class="s1">'starfish'</span><span class="p">;</span>
+<span class="c1">% BONUS force node color to texture metadata</span>
+<span class="n">ww</span><span class="o">.</span><span class="nb">display</span><span class="o">.</span><span class="n">colorBy</span> <span class="o">=</span> <span class="s1">'texture'</span><span class="p">;</span>
+<span class="c1">% BONUS force node size to isHead metadata</span>
+<span class="n">ww</span><span class="o">.</span><span class="nb">display</span><span class="o">.</span><span class="n">sizeBy</span> <span class="o">=</span> <span class="s1">'hunger'</span><span class="p">;</span>
+
+<span class="n">webweb</span><span class="p">(</span><span class="n">ww</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="select-code-block example-code-switcher json-code-block"></div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"colorBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"texture"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"starfish"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hunger"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dane"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hunger"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sebastian"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hunger"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manny"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hunger"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brock"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hunger"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ted"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hunger"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"donnie"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"sizeBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hunger"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"networks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"snake"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"layers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"edgeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">1</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">2</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">3</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">4</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">5</span><span class="w">
+                        </span><span class="p">]</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"isHead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"isHead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"isHead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"isHead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"isHead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"isHead"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"starfish"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"layers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"edgeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">1</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">2</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">3</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">4</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="p">[</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">5</span><span class="w">
+                        </span><span class="p">]</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"power"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"texture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gooey"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"power"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"texture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fishy"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"power"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.8</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"texture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chewy"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"power"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"texture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crunchy"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"power"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"texture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chewy"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"power"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.1415</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"texture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gooey"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webweb"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
