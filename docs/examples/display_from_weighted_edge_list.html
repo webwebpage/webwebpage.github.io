@@ -901,9 +901,7 @@
 <p><br />
 <script type="text/javascript" src="/assets/js/webweb/webweb.v5.js"></script></p>
 
-<p>if there are multiple edges between two nodes, the first edge’s weight is used.</p>
-
-<p>In other words, if you give webweb an edge list like <code class="highlighter-rouge">[[0, 1, .1], [0, 1, 1]]</code>, it’ll make an edge between nodes <code class="highlighter-rouge">0</code> and <code class="highlighter-rouge">1</code> with a weight <code class="highlighter-rouge">.1</code>, not <code class="highlighter-rouge">1</code>, or <code class="highlighter-rouge">1.1</code> (this would also be the case for the edge list <code class="highlighter-rouge">[[0, 1, .1], [1, 0, 1]]</code>)</p>
+<p>if the edge list we pass has multiple edges between two nodes, the weight of the edge webweb creates between those two nodes will be the sum of those edges’ weights.</p>
 
 <p>showing: 
 <span class="custom-dropdown">

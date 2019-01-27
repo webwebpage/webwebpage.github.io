@@ -901,9 +901,7 @@
 <p><br />
 <script type="text/javascript" src="/assets/js/webweb/webweb.v5.js"></script></p>
 
-<p>if both edges between two nodes are non-zero in the adjacency matrix, the first edge’s weight is used (webweb traverses adjacency matrixes row-wise).</p>
-
-<p>In other words, if you give webweb an adjacency matrix where <code class="highlighter-rouge">matrix[0][1] = .1</code> and <code class="highlighter-rouge">matrix[1][0] = 1</code>, it’ll make an edge between nodes <code class="highlighter-rouge">0</code> and <code class="highlighter-rouge">1</code> with a weight <code class="highlighter-rouge">.1</code>, and not <code class="highlighter-rouge">1</code>, or <code class="highlighter-rouge">1.1</code></p>
+<p>if the adjacency matrix we pass has multiple edges between two nodes, the weight of the edge webweb creates between those two nodes will be the sum of those edges’ weights. However, webweb won’t do this with symmetric matrices.</p>
 
 <p>showing: 
 <span class="custom-dropdown">
