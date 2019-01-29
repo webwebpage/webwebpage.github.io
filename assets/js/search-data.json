@@ -9,7 +9,7 @@
   "1": {
     "id": "1",
     "title": "Web",
-    "content": "Web(adjacency=None, title='webweb', display={}, **kwargs)a webweb object. a collection of named webweb Network objects, a set of display parameters, and a titleparameters:  adjacency: adjacency to make a visulization from. see Network.add_layer  title: string. Will set the html title of the visualization if display.attachWebwebToElementWithId = None  display: dictionary of display parameters  see Network.add_layer for all other parameters.",
+    "content": "Web(adjacency=[], title='webweb', display={}, **kwargs)a webweb object. a collection of named webweb Network objects, a set of display parameters, and a titleparameters:  adjacency: adjacency to make a visulization from. see Network.add_layer  title: string. Will set the html title of the visualization if display.attachWebwebToElementWithId = None  display: dictionary of display parameters  see Network.add_layer for all other parameters.",
     "url": "/docs/documentation/python/Web.html",
     "relUrl": "/docs/documentation/python/Web.html"
   },
@@ -23,7 +23,7 @@
   "3": {
     "id": "3",
     "title": "Web.networks.name.add_layer",
-    "content": "Web.networks.name.add_layer(adjacency=None, adjacency_type=None, nodes=None, metadata=None, nx_G=None)adds a layer to the network.  adjacency: edge list or adjacency matrix  adjacency_type: string. ‘matrix’ or ‘edge list’. Supply if passing an adjacency matrix with fewer than 3 nodes  nodes: dict of node attribute dicts  metadata: dict of vectorized metadata and display information.{  'attribute' : {      'values' : [ &quot;attribute_value&quot;, ...],      'categories' : [&quot;category1&quot;, &quot;category2&quot;, ...] (supply if values is categorical but contains numbers; values in the `values` array will be used as indexes to this array)      'type' : string. Only necessary if displaying binary information with 0/1 and not True/False.  }}  nx_G: a networkx graph.call with at least one of:  adjacency  nodes  metadata  nx_G",
+    "content": "Web.networks.name.add_layer(adjacency=[], adjacency_type=None, nodes=None, metadata=None, nx_G=None)adds a layer to the network.  adjacency: edge list or adjacency matrix  adjacency_type: string. ‘matrix’ or ‘edge list’. Supply if passing an adjacency matrix with fewer than 3 nodes  nodes: dict of node attribute dicts  metadata: dict of vectorized metadata and display information.{  'attribute' : {      'values' : [ &quot;attribute_value&quot;, ...],      'categories' : [&quot;category1&quot;, &quot;category2&quot;, ...] (supply if values is categorical but contains numbers; values in the `values` array will be used as indexes to this array)      'type' : string. Only necessary if displaying binary information with 0/1 and not True/False.  }}  nx_G: a networkx graph.call with at least one of:  adjacency  nodes  metadata  nx_G",
     "url": "/docs/documentation/python/Web.networks.name_add_layer.html",
     "relUrl": "/docs/documentation/python/Web.networks.name_add_layer.html"
   },
@@ -198,7 +198,7 @@
   "28": {
     "id": "28",
     "title": "webweb",
-    "content": "webweb!a tool for creating, displaying, and sharing interactive network visualizations on the web designed for simplicity and ease of use.features  simple and configurable model  easy to share (one file, no dependencies)  easy to embed  does what you need it to (multiple networks, layered networks)  interfaces for multiple languages (python, MATLAB) and libraries (networkx)How do I run it?showing:                 python            matlabfrom webweb import Web# make a list of unweighted edgesedge_list = [[1, 2], [2, 3], [3, 4]]# instantiate webweb and show the resultWeb(edge_list).show()% make a list of unweighted edgesedge_list = [...    1, 2;    2, 3;    3, 4;    ];webweb(edge_list);How do I install it?showing:                 python            matlabpip install webwebgit clone https://github.com/dblarremore/webweb",
+    "content": "webwebwebweb is a tool for creating, displaying, and sharing interactive network visualizations on the web, designed for simplicity and ease of use. As an example, here’s a network of character co-occurrences constructed by Hunter Wapman from the novel Infinite Jest.features  simple, lightweight, intuitive, and configurable  python, networkx, and MATLAB support  easy to share (one html file, no dependencies)  easy to embed  supports metadata, communities, weighted networks, and multi-layer networksthe simplest exampleshowing:                 python            matlabfrom webweb import Web# make a list of unweighted edgesedge_list = [[1, 2], [2, 3], [3, 4]]# instantiate webweb and show the resultWeb(edge_list).show()% make a list of unweighted edgesedge_list = [...    1, 2;    2, 3;    3, 4;    ];webweb(edge_list);installationshowing:                 python            matlabpip install webwebgit clone https://github.com/dblarremore/webweb",
     "url": "/",
     "relUrl": "/"
   },
