@@ -890,11 +890,16 @@
 
 <div id="example-visualization" style="width: 100%"><br /></div>
 <script type="text/javascript">
-    var wwdata = {"display":{"colorBy":"wearsContacts","metadata":{"wearsContacts":{"values":[true,false,true,false,false]}},"nodes":{"Brian":{"wearsGlasses":true},"Carl":{"wearsGlasses":false},"Dan":{"wearsGlasses":true},"Hunter":{"wearsGlasses":true},"Tzu-Chi":{}},"sizeBy":"wearsGlasses"},"networks":{"webweb":{"layers":[{"edgeList":[["Dan","Hunter"],["Brian","Hunter"],["Carl","Hunter"],["Carl","Brian"]],"metadata":null,"nodes":null}]}},"title":"webweb"};
+    var wwdata = {"display":{"colorBy":"wearsGlasses","nodes":{"Brian":{"wearsGlasses":true},"Carl":{"wearsGlasses":false},"Dan":{"wearsGlasses":true},"Hunter":{"wearsGlasses":true}},"sizeBy":"wearsGlasses"},"networks":{"webweb":{"layers":[{"edgeList":[["Dan","Hunter"],["Brian","Hunter"],["Carl","Hunter"],["Carl","Brian"]],"metadata":null,"nodes":null}]}},"title":"webweb"};
     wwdata.display.attachWebwebToElementWithId = "example-visualization";
+
     
-        wwdata.display.w = 200;
-        wwdata.display.h = 200;
+
+    
+    wwdata.display.w = 200;
+    
+    
+    wwdata.display.h = 200;
     
 </script>
 
@@ -935,20 +940,14 @@
             <span class="s">'Carl'</span> <span class="p">:</span> <span class="p">{</span>
                 <span class="s">'wearsGlasses'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
             <span class="p">},</span>
-            <span class="s">'Tzu-Chi'</span> <span class="p">:</span> <span class="p">{},</span>
         <span class="p">},</span>
-        <span class="s">'metadata'</span> <span class="p">:</span> <span class="p">{</span>
-            <span class="s">'wearsContacts'</span> <span class="p">:</span> <span class="p">{</span>
-                <span class="s">'values'</span> <span class="p">:</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">],</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
     <span class="p">},</span>
 <span class="p">)</span>
 
 <span class="c1"># use the 'wearsGlasses' to compute node sizes
 </span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">sizeBy</span> <span class="o">=</span> <span class="s">'wearsGlasses'</span>
 
-<span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">colorBy</span> <span class="o">=</span> <span class="s">'wearsContacts'</span>
+<span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">colorBy</span> <span class="o">=</span> <span class="s">'wearsGlasses'</span>
 
 <span class="c1"># show the visualization
 </span><span class="n">web</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1006,18 +1005,7 @@
 <div class="select-code-block example-code-switcher json-code-block"></div>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"colorBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wearsContacts"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"wearsContacts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                    </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                    </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="kc">false</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"colorBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wearsGlasses"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"Brian"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"wearsGlasses"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -1030,8 +1018,7 @@
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"Hunter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"wearsGlasses"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"Tzu-Chi"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"sizeBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wearsGlasses"</span><span class="w">
     </span><span class="p">},</span><span class="w">
