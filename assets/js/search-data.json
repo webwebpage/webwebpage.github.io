@@ -135,7 +135,7 @@
   "19": {
     "id": "19",
     "title": "getting started",
-    "content": "Installationshowing:                 python            matlabpip install webwebgit clone https://github.com/dblarremore/webwebThe simplest exampleshowing:                 python            matlabfrom webweb import Web# make a list of unweighted edgesedge_list = [[1, 2], [2, 3], [3, 4]]# instantiate webweb and show the resultWeb(edge_list).show()% make a list of unweighted edgesedge_list = [...    1, 2;    2, 3;    3, 4;    ];webweb(edge_list);Check out the examples page for more usecases!",
+    "content": "installationshowing:                 python            matlabpip install webwebgit clone https://github.com/dblarremore/webwebthe simplest exampleshowing:                 python            matlabfrom webweb import Web# make a list of unweighted edgesedge_list = [[1, 2], [2, 3], [3, 4]]# instantiate webweb and show the resultWeb(edge_list).show()% make a list of unweighted edgesedge_list = [...    1, 2;    2, 3;    3, 4;    ];webweb(edge_list);Check out the examples page for more usecases!",
     "url": "/getting-started/",
     "relUrl": "/getting-started/"
   },
