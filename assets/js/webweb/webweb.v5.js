@@ -8,6 +8,7 @@
  *
  */
 var webweb;
+var context;
 
 function Webweb(wwdata) {
     this.networkNames = Object.keys(wwdata.networks);
@@ -51,19 +52,6 @@ function Webweb(wwdata) {
         ['l', 'linkLength'],
         ['r', 'radius'],
         ['w', 'width'],
-    ];
-
-    this.nonMetadataKeys = [
-        'degree',
-        'strength',
-        'fx',
-        'fy',
-        'idx',
-        'index',
-        'vx',
-        'vy',
-        'x',
-        'y',
     ];
 
     this.display = this.standardizeDisplayParameterSynonyms(wwdata.display);
@@ -235,12 +223,193 @@ Webweb.prototype.createNodes = function() {
 
     this.nodes = [];
     for (var i = 0; i < this.maxNodeCount; i++) {
-        this.nodes.push({
-            "idx" : i,
-        });
+        this.nodes.push(new Node(i));
     }
 
     this.nodesPersistence = [];
+}
+////////////////////////////////////////////////////////////////////////////////
+// 
+// Node
+// 
+////////////////////////////////////////////////////////////////////////////////
+function Node(idx) {
+    this.idx = idx;
+}
+
+Node.prototype.radius = function() {
+    if (this.fixedRadius) {
+        return this.fixedRadius;
+    }
+
+    var radius = this.__scaledSize * webweb.display.r;
+    if (this.matchesString() || this.containsMouse(radius)) {
+        radius *= 1.3;
+    }
+    return radius;
+}
+Node.prototype.outline = function() {
+    if (this.matchesString()) {
+        return "black";
+    }
+    else {
+        return d3.rgb(255, 255, 255);
+    }
+}
+Node.prototype.isMetadataKey = function(key) {
+    var nonMetadataKeys = [
+        'degree',
+        'strength',
+        'fx',
+        'fy',
+        'idx',
+        'index',
+        'vx',
+        'vy',
+        'x',
+        'y',
+    ];
+
+    if (nonMetadataKeys.indexOf(key) < 0) {
+        var attribute = this[key];
+        
+        if (attribute && {}.toString.call(attribute) !== '[object Function]') {
+            return true;
+        }
+    }
+
+    return false;
+}
+Node.prototype.draw = function(ctx) {
+    var radius = this.radius();
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, radius, 0, Math.PI * 2, false)
+    ctx.strokeStyle = this.outline();
+    ctx.stroke();
+    ctx.fillStyle = d3.rgb(this.__scaledColor);
+    ctx.fill();
+
+    this.pushNodeText();
+}
+Node.prototype.pushNodeText = function() {
+    var radius = this.radius();
+    if (! this.nonInteractive) {
+        if (this.matchesString() || webweb.display.showNodeNames || this.containsMouse(radius)) {
+            if (webweb.simulation.alpha() < .01) {
+                var text = this.name || this.idx;
+                var textX = this.x + 1.1 * radius;
+                var textY = this.y - 1.1 * radius;
+                var font = "12px";
+                webweb.nodeText.push(new Text(text, textX, textY, font));
+            }
+        }
+    }
+}
+Node.prototype.drawSVG = function() {
+    var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttributeNS(null, 'cx', this.x);
+    circle.setAttributeNS(null, 'cy', this.y);
+    circle.setAttributeNS(null, 'r', this.radius());
+    circle.setAttributeNS(null, 'style', 'fill: ' + d3.rgb(this.__scaledColor) + '; stroke: ' + this.outline() + ';' );
+
+    this.pushNodeText();
+    return circle;
+}
+Node.prototype.containsMouse = function(radius) {
+    if (webweb.mouseState == undefined) {
+        return false;
+    }
+
+    // recursion...
+    if (radius == undefined) {
+        radius = 1.3 * this.radius();
+    }
+
+    if (
+        this.x + radius >= webweb.mouseState.x &&
+        this.x - radius <= webweb.mouseState.x &&
+        this.y + radius >= webweb.mouseState.y &&
+        this.y - radius <= webweb.mouseState.y
+    ) {
+        return true;
+    }
+
+    return false;
+}
+Node.prototype.matchesString = function() {
+    var matchString = webweb.display.nameToMatch;
+    if (matchString !== undefined && matchString.length > 0) {
+        if (this.name !== undefined && this.name.indexOf(matchString) >= 0) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+////////////////////////////////////////////////////////////////////////////////
+// 
+// Text
+// 
+////////////////////////////////////////////////////////////////////////////////
+function Text(value, x, y, font) {
+    this.value = value;
+    this.x = x;
+    this.y = y;
+    this.font = font;
+}
+
+Text.prototype.draw = function(ctx) {
+    ctx.save();
+    ctx.fillStyle = "black";
+    ctx.font = this.font;
+    ctx.fillText(this.value, this.x, this.y);
+    ctx.restore();
+}
+Text.prototype.drawSVG = function() {
+    var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.textContent = this.value;
+    text.setAttributeNS(null, 'x', this.x);
+    text.setAttributeNS(null, 'y', this.y);
+    text.setAttributeNS(null, 'style', 'fill: black; font-size: ' + this.font + ';' );
+    return text;
+}
+////////////////////////////////////////////////////////////////////////////////
+// 
+// Link
+// 
+////////////////////////////////////////////////////////////////////////////////
+function Link(source, target, weight) {
+    this.source = source;
+    this.target = target;
+    this.w = weight;
+    this.strokeStyle = d3.rgb(150, 150, 150)
+}
+Link.prototype.width = function() {
+    return this.w == 0 ? 0 : webweb.scales.links.width(this.w);
+}
+Link.prototype.opacity = function() {
+    return webweb.scales.links.opacity(this.w);
+}
+Link.prototype.draw = function(ctx) {
+    ctx.save();
+    ctx.globalAlpha = this.opacity();
+    ctx.beginPath();
+    ctx.moveTo(this.source.x, this.source.y);
+    ctx.lineTo(this.target.x, this.target.y);
+    ctx.lineWidth = this.width();
+    ctx.strokeStyle = this.strokeStyle;
+    ctx.stroke();
+    ctx.restore();
+}
+Link.prototype.drawSVG = function() {
+    var link = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    link.setAttributeNS(null, 'x1', this.target.x);
+    link.setAttributeNS(null, 'y1', this.target.y);
+    link.setAttributeNS(null, 'x2', this.source.x);
+    link.setAttributeNS(null, 'y2', this.source.y);
+    link.setAttributeNS(null, 'style', 'stroke: ' + this.strokeStyle + '; stroke-opacity: ' + this.opacity() + ';' + 'stroke-width: ' + this.width() + ';' );
+
+    return link;
 }
 ////////////////////////////////////////////////////////////////////////////////
 // adds/removes nodes from the visualization
@@ -254,17 +423,14 @@ Webweb.prototype.setVisibleNodes = function() {
 
     if (count < this.nodes.length) {
         while (count != this.nodes.length) {
-            var toRemove = this.nodes.pop();
-            var drawnNode = document.getElementById("node_" + toRemove.idx)
-            document.getElementById("webweb-vis").removeChild(drawnNode);
-            this.nodesPersistence.push({ 'node' : toRemove, 'toDraw' : drawnNode });
+            var node = this.nodes.pop();
+            this.nodesPersistence.push(node);
         }
     }
     else if (count > this.nodes.length) {
         while (count != this.nodes.length) {
-            var toAdd = this.nodesPersistence.pop();
-            document.getElementById("webweb-vis").appendChild(toAdd.toDraw);
-            this.nodes.push(toAdd.node);
+            var node = this.nodesPersistence.pop();
+            this.nodes.push(node);
         }
     }
 }
@@ -272,7 +438,7 @@ Webweb.prototype.resetNodeMetadata = function() {
     // reset node data
     for (var i in this.nodes) {
         for (var key in this.nodes[i]) {
-            if (this.nonMetadataKeys.indexOf(key) < 0) {
+            if (this.nodes[i].isMetadataKey(key)) {
                 delete this.nodes[i][key];
             }
             else if (key == 'degree' || key == 'strength') {
@@ -329,7 +495,7 @@ Webweb.prototype.setNodeMetadata = function() {
     for (var i in this.nodes) {
         var node = this.nodes[i];
         for (var key in node) {
-            if (this.nonMetadataKeys.indexOf(key) < 0) {
+            if (node.isMetadataKey(key)) {
                 if (this.display.metadata !== undefined && this.display.metadata[key] !== undefined) {
                     var metadatumInfo = this.display.metadata[key];
 
@@ -366,7 +532,7 @@ Webweb.prototype.setNodeMetadata = function() {
     // identify the set of metadata keys
     this.nodes.forEach(function(node) {
         for (var key in node) {
-            if (this.nonMetadataKeys.indexOf(key) < 0) {
+            if (node.isMetadataKey(key)) {
                 this.allMetadata[key] = {};
             }
         }
@@ -486,11 +652,11 @@ Webweb.prototype.createLinks = function() {
     for (var source in linkMatrix) {
         for (var target in linkMatrix[source]) {
             if (linkMatrix[source][target]) {
-                this.links.push({
-                    source: source,
-                    target: target,
-                    w: linkMatrix[source][target],
-                })
+                this.links.push(new Link(
+                    source,
+                    target,
+                    linkMatrix[source][target],
+                ));
             }
         }
     }
@@ -588,8 +754,6 @@ function initializeWebweb() {
 
     initializeHTML();
 
-    drawNodes();
-
     webweb.createSimulation();
 
     displayNetwork();
@@ -633,14 +797,65 @@ function writeVisualization(container) {
         webweb.display.h = Math.min.apply(null, [webweb.display.w, 600]);
     }
 
-    vis = d3.select("#webweb-visualization-container")
-        .append("svg")
-        .attr("width", webweb.display.w)
-        .attr("height", webweb.display.h)
-        .attr("id", "webweb-vis");
+    var dpr = window.devicePixelRatio || 1;
+    canvas = d3.select("#webweb-visualization-container")
+        .append("canvas")
+        .style("width", webweb.display.w + "px")
+        .style("height", webweb.display.h + "px")
+        .attr("width", webweb.display.w * dpr)
+        .attr("height", webweb.display.h * dpr)
+        .attr("id", "webweb-vis-canvas");
 
     d3.select("#webweb-visualization-container")
         .append("br");
+
+    getCanvasContext();
+}
+function getCanvasContext() {
+    var dpr = window.devicePixelRatio || 1;
+    var canvas = document.getElementById("webweb-vis-canvas");
+
+    canvas.addEventListener('mousemove', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        
+        webweb.mouseState = {
+            x: e.clientX - rect.left - 3,
+            y: e.clientY - rect.top - 3,
+        }
+
+        if (webweb.dragging){
+            webweb.selectedNode.x = webweb.mouseState.x;
+            webweb.selectedNode.y = webweb.mouseState.y;
+        }
+        tick();
+    }, true);
+    canvas.addEventListener('mousedown', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        
+        webweb.mouseState = {
+            x: e.clientX - rect.left - 3,
+            y: e.clientY - rect.top - 3,
+        }
+
+        webweb.dragging = false;
+        webweb.selectedNode = undefined;
+        for (var i in webweb.nodes) {
+            if (webweb.nodes[i].containsMouse()) {
+                webweb.dragging = true;
+                webweb.selectedNode = webweb.nodes[i];
+            }
+        }
+    }, true);
+
+    canvas.addEventListener('mouseup', function(e) {
+        if (webweb.dragging) {
+            webweb.updateSimulation();
+        }
+        webweb.dragging = false;
+    }, true);
+
+    context = canvas.getContext('2d');
+    context.scale(dpr, dpr);
 }
 ////////////////////////////////////////////////////////////////////////////////
 // - changes the number of visible nodes
@@ -668,9 +883,11 @@ function displayNetwork() {
     // change the display of the layers widget
     setNetworkLayerMenuVisibility();
 
-    drawLinks();
-    redrawNodes();
-    redisplayNodeNames();
+    // if we've frozen node movement manually tick so new edges are evaluated.
+    if (webweb.display.freezeNodeMovement) {
+        tick();
+    }
+    computeLegend();
 }
 ////////////////////////////////////////////////////////////////////////////////
 // creates a map from observed nodes (nodes in the edge list, display.nodes, and
@@ -724,7 +941,9 @@ function computeSizes() {
         // scale between true and false even if we only have one of
         // the two values
         var extent = type == 'binary' ? [true, false] : scaledValues;
-        webweb.scales.nodeSize.domain(d3.extent(extent)).range([0.5, 1.5]);
+        var range = d3.set(extent).values().length > 1 ? [0.5, 1.5] : [1, 1];
+
+        webweb.scales.nodeSize.domain(d3.extent(extent)).range(range);
 
         for (var i in scaledValues) {
             scaledValues[i] = webweb.scales.nodeSize(scaledValues[i]);
@@ -858,14 +1077,16 @@ function changeNetwork(networkName) {
 function changeSizes(sizeBy) {
     webweb.display.sizeBy = sizeBy;
 
-    redrawNodes();
+    computeLegend();
+    tick();
 
     var showInvertWidget = webweb.getSizeByType() == 'binary' ? true : false;
     setInvertBinaryWidgetVisibility(showInvertWidget, 'size');
 }
 function changeColors(colorBy) {
     webweb.display.colorBy = colorBy;
-    redrawNodes();
+    computeLegend();
+    tick();
     var showColorPaletteWidget = webweb.getColorByType() == 'categorical' ? true : false;
     var showInvertWidget = false;
 
@@ -878,7 +1099,8 @@ function changeColors(colorBy) {
 }
 function setColorPalette(colorPalette) {
     webweb.display.colorPalette = colorPalette;
-    redrawNodes();
+    computeLegend();
+    tick();
 }
 function changeCharge(c) {
     if (c >= 0) {
@@ -891,12 +1113,14 @@ function changeCharge(c) {
 }
 function changeR(r) {
     webweb.display.r = r;
-    redrawNodes();
+    computeLegend();
+    tick();
 }
 function changeDistance(l) {
     if (l >= 0) {
         webweb.display.l = l;
         webweb.updateSimulation("link");
+        tick();
     }
     else {
         alert("Distance must be nonnegative.");
@@ -940,29 +1164,29 @@ function toggleFreezeNodes(isFrozen) {
 
     var freezeNodesToggle = document.getElementById('freezeNodes-widget');
     freezeNodesToggle.checked = webweb.display.freezeNodeMovement ? true : false;
-
-    redisplayNodeNames();
+    tick();
 }
 function toggleShowNodeNames(show) {
     webweb.display.showNodeNames = show;
-    redisplayNodeNames();
-
     var showNodeNamesWidget = document.getElementById('showNodeNames-widget');
     showNodeNamesWidget.checked = webweb.display.showNodeNames;
+    tick();
 }
 function toggleInvertBinaryColors(setting) {
     var widget = document.getElementById('invertBinaryColors-widget');
     widget.checked = setting;
     webweb.display.invertBinaryColors = setting;
 
-    redrawNodes();
+    computeLegend();
+    tick();
 }
 function toggleInvertBinarySizes(setting) {
     var widget = document.getElementById('invertBinarySizes-widget');
     widget.checked = setting;
     webweb.display.invertBinarySizes = setting;
 
-    redrawNodes();
+    computeLegend();
+    tick();
 }
 function getBinaryValue(value, type) {
     var attribute = getBinaryInversionAttributeForType(type);
@@ -977,57 +1201,19 @@ function getBinaryValue(value, type) {
 function getBinaryValues(type) {
     return [getBinaryValue(false, type), getBinaryValue(true, type)];
 }
-function redisplayNodeNames() {
-    hideAllNodeText();
-
-    if (webweb.display.showNodeNames || webweb.display.nameToMatch) {
-        showNodeNamesWhenStable();
-    }
-}
-function showNodeNamesWhenStable() {
-    window.setTimeout(function() {
-        if (webweb.simulation.alpha() < .01) {
-            showAppropriateNodeText();
-        }
-        else {
-            showNodeNamesWhenStable();
-        }
-    }, 100);
-}
 function toggleLinkWidthScaling(checked) {
     var range = checked ? [0.5, 4] : [1, 1];
     webweb.scales.links.width.range(range);
-    redrawLinks();
+    tick();
 }
 function toggleLinkOpacityScaling(checked) {
     var range = checked ? [0.4, 0.9] : [1, 1];
     webweb.scales.links.opacity.range(range);
-    redrawLinks();
+    tick();
 }
 function matchNodesNamed(x) {
     webweb.display.nameToMatch = x;
-
-    webweb.nodes.forEach(function(d) {
-        unHighlightNode(d);
-
-        if (nodeNameMatches(d)) {
-            highlightNode(d);
-        }
-    });
-
-    showAppropriateNodeText();
-}
-function nodeNameMatches(node) {
-    var name = node.name;
-    var nameToMatch = webweb.display.nameToMatch;
-    if (nameToMatch !== undefined && nameToMatch.length > 0) {
-        if (name !== undefined && name.indexOf(nameToMatch) >= 0) {
-            return true;
-        }
-    }
-    else {
-        return false;
-    }
+    tick();
 }
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -1055,7 +1241,8 @@ function nodeNameMatches(node) {
 function computeLegend() {
     computeColors();
     computeSizes();
-    vis.selectAll("#legend").remove();
+    webweb.legendNodes = [];
+    webweb.legendText = [];
 
     var sizeBy = webweb.display.sizeBy;
     var sizeType = webweb.getSizeByType();
@@ -1123,7 +1310,7 @@ function computeLegend() {
             initialPushdown += pushdown(sizeLegend.values.length);
             pushdown = function (i) {
                 if (i !== undefined) {
-                    return 2.3 * R * i + initialPushdown + datatypeTextPushdown;
+                    return 2.3 * Math.max(R, 7.5) * i + initialPushdown + datatypeTextPushdown;
                 }
                 return initialPushdown;
             }
@@ -1183,34 +1370,25 @@ function Legend(metadataName, legendType, dataType, rawValues) {
     }
 }
 Legend.prototype.drawLegendLabel = function(pushDown) {
-    vis.append("text")
-        .attr("id", "legend")
-        .text(this.metadataName)
-        .attr("x", 5)
-        .attr("y", pushDown())
-        .attr("fill", "black")
-        .attr("font-size", 12);
+    var text = new Text(this.metadataName, 5, pushDown(), "12px");
+    webweb.legendText.push(text);
 }
 Legend.prototype.drawLegendText = function(pushDown, pushRight) {
     this.text.forEach(function(d, i) {
-        vis.append("text")
-            .attr("id", "legend")
-            .text(d)
-            .attr("x", pushRight)
-            .attr("y", pushDown(i) + 3.5)
-            .attr("fill", "black")
-            .attr("font-size", 12);
+        var text = new Text(d, pushRight, pushDown(i) + 3.5, "12px");
+        webweb.legendText.push(text);
     });
 }
 Legend.prototype.drawLegendValues = function(pushDown, pushRight, sizeFunction, colorFunction) {
     this.values.forEach(function(d, i){
-        vis.append("circle")
-            .attr("id", "legend")
-            .attr("r", sizeFunction(d))
-            .attr("cx", pushRight)
-            .attr("cy", pushDown(i))
-            .style("fill", colorFunction(i))
-            .style("stroke", d3.rgb(255, 255, 255));
+        var node = new Node(-1);
+        node.fixedRadius = sizeFunction(d);
+        node.x = pushRight;
+        node.y = pushDown(i);
+        node.__scaledColor = colorFunction(i);
+        node.nonInteractive = true;
+
+        webweb.legendNodes.push(node);
     });
 }
 Legend.prototype.makeBinaryLegend = function() {
@@ -1289,207 +1467,27 @@ Legend.prototype.makeScalarCategoricalLegend = function(bins) {
 //
 //
 ////////////////////////////////////////////////////////////////////////////////
-function drawLinks() {
-    webweb.linkSelector = vis.selectAll(".webweb-link")
-        .data(webweb.links);
-
-    webweb.linkSelector.enter()
-        .insert("line", ".webweb-node")
-        .attr("class", "webweb-link")
-        .attr("id", function(d, i) { 
-            return "link_" + i; 
-        })
-        .style("stroke", d3.rgb(150, 150, 150))
-        .style("stroke-width", function(d){
-            if (d.w == 0) {
-                return 0;
-            }
-            else {
-                return webweb.scales.links.width(d.w);
-            }
-        })
-        .style("stroke-opacity", function(d) {
-            return webweb.scales.links.opacity(d.w)
-        });
-
-    webweb.linkSelector.exit().remove();
-
-    // if we've frozen node movement manually tick so new edges are evaluated.
-    if (webweb.display.freezeNodeMovement) {
-        tick();
-    }
-}
-function redrawLinks() {
-    webweb.links.forEach(function(d, i) {
-        d3.select("#link_" + i)
-            .transition()
-            .style("stroke-width", function(d){
-                if (d.w == 0) {
-                    return 0;
-                }
-                else {
-                    return webweb.scales.links.width(d.w);
-                }
-            })
-            .style("stroke-opacity", function(d) {
-                return webweb.scales.links.opacity(d.w)
-            });
-    })
-}
-function drawNodes() {
-    vis.selectAll(".webweb-node")
-        .data(webweb.nodes)
-        .enter()
-        .insert("circle")
-        .attr("class", "webweb-node")
-        .attr("r", webweb.display.r)
-        .attr("cx", function(d) {
-            return d.x;
-        })
-        .attr("cy", function(d) {
-            return d.y;
-        })
-        .attr("id", function(d) {
-            return ("node_" + d.idx);
-        })
-        .style("fill", d3.rgb(255, 255, 255))
-        .style("stroke", d3.rgb(255, 255, 255))
-        .exit().remove();
-
-    webweb.nodeSelector = vis.selectAll(".webweb-node");
-
-    webweb.nodeSelector.on("mousedown", function(d) {
-        if (! webweb.display.showNodeNames) {
-            hideOneNodeText(d);
-        }
-    });
-
-    webweb.nodeSelector.on("mouseover", function (d) {
-        highlightNode(d); 
-
-        if (! webweb.display.showNodeNames) {
-            showOneNodeText(d);
-        }
-    });
-
-    webweb.nodeSelector.on("mouseout", function(d) {
-        unHighlightNode(d);
-        if (! webweb.display.showNodeNames && ! nodeNameMatches(d)) {
-            hideOneNodeText(d);
-        }
-    });
-
-    webweb.nodeSelector.call(d3.drag()
-        .on("start", dragstarted)
-        .on("drag", dragged)
-        .on("end", dragended)
-    );
-}
-function dragstarted(d) {
-    // hide node text while we are dragging
-    hideAllNodeText();
-
-    d3.event.sourceEvent.stopPropagation();
-    if (!d3.event.active) {
-        webweb.simulation.alphaTarget(0.3).restart();
-    }
-    d.fx = d.x;
-    d.fy = d.y;
-}
-function dragged(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
-}
-function dragended(d) {
-    if (!d3.event.active) {
-        webweb.simulation.alphaTarget(0);
-    }
-
-    if (! webweb.display.freezeNodeMovement) {
-        d.fx = null;
-        d.fy = null;
-    }
-
-    redisplayNodeNames();
-}
-function redrawNodes() {
-    computeLegend();
-
-    webweb.nodes.forEach(function(d, i) {
-        d3.select("#node_" + d.idx)
-            .attr("r", webweb.nodes[i]['__scaledSize'] * webweb.display.r)
-            .style("fill", d3.rgb(webweb.nodes[i]['__scaledColor']));
-    });
-
-    if (webweb.display.nameToMatch != "") {
-        matchNodesNamed(webweb.display.nameToMatch);
-    };
-}
 // tick attributes for links and nodes
 function tick() {
-    webweb.linkSelector = vis.selectAll(".webweb-link")
-    webweb.linkSelector.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+    context.clearRect(0, 0, webweb.display.w, webweb.display.h);
+    webweb.links.forEach(function(link) {
+        link.draw(context);
+    });
 
-    webweb.nodeSelector = vis.selectAll(".webweb-node")
-    webweb.nodeSelector.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
-}
-// Highlight a node by making it bigger and outlining it
-function highlightNode(d) {
-    d3.select("#node_" + d.idx)
-        .transition().duration(100)
-        .attr("r", webweb.nodes[d.idx]['__scaledSize'] * webweb.display.r * 1.3)
-        .style("stroke", d3.rgb(0,0,0));
-}
-// Returns a node's highlighted size and stroke to normal
-function unHighlightNode(d) {
-    if (webweb.display.nameToMatch == "" || d.name.indexOf(webweb.display.nameToMatch) < 0) {
-        d3.select("#node_" + d.idx)
-            .transition()
-            .attr("r", webweb.nodes[d.idx]['__scaledSize'] * webweb.display.r)
-            .style("stroke", d3.rgb(255, 255, 255));
-    }
-}
-////////////////////////////////////////////////////////////////////////////////
-// shows node text which should be shown (because it matches the current match
-// string or because we're showing all nodes)
-// hides 'em when they should be hidden
-////////////////////////////////////////////////////////////////////////////////
-function showAppropriateNodeText() {
-    for (var i in webweb.nodes) {
-        var node = webweb.nodes[i];
+    webweb.nodeText = [];
+    webweb.nodes.forEach(function(node) {
+        node.draw(context);
+    });
+    webweb.nodeText.forEach(function(text) {
+        text.draw(context);
+    });
 
-        if (nodeNameMatches(node) || getTruthinessSafely(webweb.display.showNodeNames)) {
-            showOneNodeText(node);
-        }
-        else {
-            hideOneNodeText(node);
-        }
-    }
-}
-function showOneNodeText(node) {
-    var text = node.name || node.idx;
-    var nodeTextElement = document.getElementById("nodeTextId-" + node.idx);
-
-    if (nodeTextElement == undefined) {
-        vis.append("text")
-            .text(text)
-            .attr("x", node.x + 1.5 * webweb.display.r)
-            .attr("y", node.y - 1.5 * webweb.display.r)
-            .attr("fill", "black")
-            .attr("font-size", 12)
-            .attr("class", "nodeText")
-            .attr("id",  "nodeTextId-" + node.idx);
-    }
-}
-function hideOneNodeText(node) {
-    vis.selectAll("#nodeTextId-" + node.idx).remove();
-}
-function hideAllNodeText() {
-    vis.selectAll(".nodeText").remove();
+    webweb.legendNodes.forEach(function(node) {
+        node.draw(context);
+    });
+    webweb.legendText.forEach(function(text) {
+        text.draw(context);
+    });
 }
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -1717,7 +1715,7 @@ function writeMenus(container) {
                         'inline' : true,
                     },
                     'invertBinarySizes' : {
-                        'text' : 'invert ',
+                        'text' : ' invert ',
                         'type' : 'checkbox',
                         'functions' : {
                             'change' : toggleInvertBinarySizes,
@@ -1748,7 +1746,7 @@ function writeMenus(container) {
                         'inline' : true,
                     },
                     'invertBinaryColors' : {
-                        'text' : 'invert ',
+                        'text' : ' invert ',
                         'type' : 'checkbox',
                         'functions' : {
                             'change' : toggleInvertBinaryColors,
@@ -1895,13 +1893,36 @@ function saveIt(fileName, fileType, content) {
     }
 }
 function writeSVGDownloadLink() {
-    var svg = document.getElementById('webweb-vis');
+    var svg = drawSVG();
     svg.setAttribute("title", webweb.display.networkName);
     svg.setAttribute("version", 1.1)
     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
 
     saveIt(webweb.display.networkName, "image/svg+xml", svg.outerHTML);
 };
+function drawSVG() {
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+    webweb.links.forEach(function(link) {
+        svg.appendChild(link.drawSVG());
+    });
+
+    webweb.nodes.forEach(function(node) {
+        svg.appendChild(node.drawSVG());
+    });
+    webweb.nodeText.forEach(function(text) {
+        svg.appendChild(text.drawSVG());
+    });
+
+    webweb.legendNodes.forEach(function(node) {
+        svg.appendChild(node.drawSVG());
+    });
+    webweb.legendText.forEach(function(text) {
+        svg.appendChild(text.drawSVG());
+    });
+
+    return svg;
+}
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
