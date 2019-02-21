@@ -232,48 +232,90 @@
   },
   "33": {
     "id": "33",
+    "title": "python",
+    "content": "full documentation for the python code.you interact with webweb via the webweb.Web object, which has the following attributes:  display: dictionary of webweb display parameters; see the display documentation  networks: a dictionary of webweb.Network objectsa python webweb.Network object has the following attributes:  layers: a list of dictionaries with the following attributes:{    'edgeList' : [[0, 1, .5], ...],    'nodes' : {        'key1' : {            'attribute1' : value1,            'attribute2' : value2,            ...        },        ...    },    'metadata' : {        'attribute3' : {            'values' : [1, 2, ...],            ...        },        ...    },}",
+    "url": "/documentation/python/",
+    "relUrl": "/documentation/python/"
+  },
+  "34": {
+    "id": "34",
     "title": "radius",
     "content": "type: positive non-zero floatsynonyms: rdefault: 5we can change the radius of the nodes by setting the display.radius parameter.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]])# make nodes really bigweb.display.radius = 20# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;radius&quot;: 20    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1                        ],                        [                            1,                            2                        ],                        [                            2,                            3                        ],                        [                            3,                            4                        ],                        [                            4,                            5                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {                        &quot;0&quot;: {},                        &quot;1&quot;: {},                        &quot;2&quot;: {},                        &quot;3&quot;: {},                        &quot;4&quot;: {}                    }                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/radius.html",
     "relUrl": "/docs/documentation/display/radius.html"
   },
-  "34": {
-    "id": "34",
+  "35": {
+    "id": "35",
     "title": "scaleLinkOpacity",
     "content": "type: booleandefault: falsewe can scale link opacities by their weight by setting the scaleLinkOpacity parameter.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1, 5], [1, 2, 20], [2, 3, .2], [3, 4, 70], [4, 5, 100]])web.display.scaleLinkOpacity = True# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;scaleLinkOpacity&quot;: true    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1,                            5                        ],                        [                            1,                            2,                            20                        ],                        [                            2,                            3,                            0.2                        ],                        [                            3,                            4,                            70                        ],                        [                            4,                            5,                            100                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {                        &quot;0&quot;: {},                        &quot;1&quot;: {},                        &quot;2&quot;: {},                        &quot;3&quot;: {},                        &quot;4&quot;: {}                    }                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/scaleLinkOpacity.html",
     "relUrl": "/docs/documentation/display/scaleLinkOpacity.html"
   },
-  "35": {
-    "id": "35",
+  "36": {
+    "id": "36",
     "title": "scaleLinkWidth",
     "content": "type: booleandefault: falsewe can scale link widths by their weight by setting the scaleLinkWidth parameter.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1, 5], [1, 2, 20], [2, 3, .2], [3, 4, 70], [4, 5, 100]])web.display.scaleLinkWidth = True# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;scaleLinkWidth&quot;: true    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1,                            5                        ],                        [                            1,                            2,                            20                        ],                        [                            2,                            3,                            0.2                        ],                        [                            3,                            4,                            70                        ],                        [                            4,                            5,                            100                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {                        &quot;0&quot;: {},                        &quot;1&quot;: {},                        &quot;2&quot;: {},                        &quot;3&quot;: {},                        &quot;4&quot;: {}                    }                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/scaleLinkWidth.html",
     "relUrl": "/docs/documentation/display/scaleLinkWidth.html"
   },
-  "36": {
-    "id": "36",
+  "37": {
+    "id": "37",
     "title": "showNodeNames",
     "content": "type: booleandefault: falsewe can show all node names by setting the showNodeNames parameter.showing:                 python            jsonfrom webweb import Webweb = Web(    adjacency=[[0, 1], [1, 2]],    display={        'nodes' : {            0 : {                'name' : 'Huberg',            },            1 : {                'name' : 'Pierot',            },            2 : {                'name' : 'Slartibertfast',            },        },    },)web.display.showNodeNames = True# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;nodes&quot;: {            &quot;0&quot;: {                &quot;name&quot;: &quot;Huberg&quot;            },            &quot;1&quot;: {                &quot;name&quot;: &quot;Pierot&quot;            },            &quot;2&quot;: {                &quot;name&quot;: &quot;Slartibertfast&quot;            }        },        &quot;showNodeNames&quot;: true    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1                        ],                        [                            1,                            2                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {                        &quot;0&quot;: {},                        &quot;1&quot;: {},                        &quot;2&quot;: {},                        &quot;3&quot;: {},                        &quot;4&quot;: {}                    }                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/showNodeNames.html",
     "relUrl": "/docs/documentation/display/showNodeNames.html"
   },
-  "37": {
-    "id": "37",
+  "38": {
+    "id": "38",
     "title": "sizeBy",
     "content": "type: stringdefault: 'none'we can compute node radii by a metadata attribute by setting the sizeBy parameter to that attribute’s name.categorical metadata attributes can’t be used to compute node sizes.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]], display={    'metadata' : {        'happiness' : {            'values' : [5, 10, 7, 8, 1, 3],        }    }})# use the 'happiness' attribute to size nodesweb.display.sizeBy = 'happiness'# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;metadata&quot;: {            &quot;happiness&quot;: {                &quot;values&quot;: [                    5,                    10,                    7,                    8,                    1,                    3                ]            }        },        &quot;sizeBy&quot;: &quot;happiness&quot;    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1                        ],                        [                            1,                            2                        ],                        [                            2,                            3                        ],                        [                            3,                            4                        ],                        [                            4,                            5                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {                        &quot;0&quot;: {},                        &quot;1&quot;: {},                        &quot;2&quot;: {},                        &quot;3&quot;: {},                        &quot;4&quot;: {}                    }                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/sizeBy.html",
     "relUrl": "/docs/documentation/display/sizeBy.html"
   },
-  "38": {
-    "id": "38",
+  "39": {
+    "id": "39",
+    "title": "webweb.Network",
+    "content": "webweb.Network(**kwargs)a webweb Network objectcalling a webweb.Network object sets the first layer of thatwebweb.Network object using the parameters passed.if the object already had layers, those layers will be removed.see add_layer for parameter information",
+    "url": "/docs/documentation/python/webweb.Network.html",
+    "relUrl": "/docs/documentation/python/webweb.Network.html"
+  },
+  "40": {
+    "id": "40",
+    "title": "webweb.Network.add_layer",
+    "content": "webweb.Network.add_layer(adjacency=[], adjacency_type=None, nodes={}, metadata=None, nx_G=None, gml_file=None)adds a layer to the network.parameters:  adjacency: edge list or adjacency matrix  adjacency_type: string. ‘matrix’ or ‘edge list’  nodes: dict of node attribute dicts    {  'key1' : {      'attribute1' : 'value1',      ...  },  ...}        metadata: dict of vectorized metadata and display information.    {  'attribute' : {      'values' : [ &quot;attribute_value&quot;, ...],      # `categories` only needs to be supplied if `values` holds      # categorical data that is represented by numbers.      # the values in the `values` array will be used as indexes to      # this array.      'categories' : [&quot;category1&quot;, &quot;category2&quot;, ...]      # `type` only needs to be set if you're displaying binary      # information with 0/1 instead of True/False       'type' : 'binary',  }}        nx_G: a networkx graph.  gml_file: path to a gml filenodes which appear in both the adjacency and as keys in the nodesdictionary will be given the values of the attributes under theircorresponding key in the nodes dictionaryadjacency_type only needs to be supplied if your adjacency isrepresented as a matrix and that matrix has 3 or fewer nodescall with at least one of:  adjacency  nodes  metadata  nx_G  gml_file",
+    "url": "/docs/documentation/python/webweb.Network_add_layer.html",
+    "relUrl": "/docs/documentation/python/webweb.Network_add_layer.html"
+  },
+  "41": {
+    "id": "41",
+    "title": "webweb.Web",
+    "content": "webweb.Web(adjacency=[], title='webweb', display={}, **kwargs)a webweb object. a collection of named webweb Network objects, a set of display parameters, and a titleparameters:  adjacency: adjacency to make a visulization from. see Network.add_layer  title: string. Will set the html title of the visualization if display.attachWebwebToElementWithId = None  display: dictionary of display parameters  see Network.add_layer for all other parameters.",
+    "url": "/docs/documentation/python/webweb.Web.html",
+    "relUrl": "/docs/documentation/python/webweb.Web.html"
+  },
+  "42": {
+    "id": "42",
+    "title": "webweb.Web.save",
+    "content": "webweb.Web.save(path)saves the webweb visualization to the specified pathparameters:  path: the path to save to.",
+    "url": "/docs/documentation/python/webweb.Web_save.html",
+    "relUrl": "/docs/documentation/python/webweb.Web_save.html"
+  },
+  "43": {
+    "id": "43",
+    "title": "webweb.Web.show",
+    "content": "webweb.Web.show()display the webweb visualization.  creates the html file  opens the web browser",
+    "url": "/docs/documentation/python/webweb.Web_show.html",
+    "relUrl": "/docs/documentation/python/webweb.Web_show.html"
+  },
+  "44": {
+    "id": "44",
     "title": "webweb in the wild",
     "content": "For fun, here’s a running list of places webweb’s been used! If a project of yours uses webweb, shoot an email and we’ll add it to the list!  Can you escape a maze without walls?  Networks in Infinite Jest  Remnants of an Ancient Metabolism without Phosphate. Cell  Ape parasite origins of human malaria virulence genes. Nature Commmunications  Systematic inequality and hierarchy in faculty hiring networks. Science Advances  Efficiently inferring community structure in bipartite networks. Phys. Rev. E  A Network Approach to Analyzing Highly Recombinant Malaria Parasite Genes. PLoS Comp Biol",
     "url": "/in-the-wild/",
     "relUrl": "/in-the-wild/"
   },
-  "39": {
-    "id": "39",
+  "45": {
+    "id": "45",
     "title": "width",
     "content": "type: positive non-zero floatsynonyms: wwe can change the width of the visualization by setting the display.width property.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]])web.display.width = 50# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;width&quot;: 50    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1                        ],                        [                            1,                            2                        ],                        [                            2,                            3                        ],                        [                            3,                            4                        ],                        [                            4,                            5                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {                        &quot;0&quot;: {},                        &quot;1&quot;: {},                        &quot;2&quot;: {},                        &quot;3&quot;: {},                        &quot;4&quot;: {}                    }                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/width.html",

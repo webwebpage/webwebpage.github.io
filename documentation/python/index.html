@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <title>webweb canvas released - webweb</title>
+  <title>python - webweb</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
   
   <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
@@ -278,7 +278,7 @@
     
       
         
-          <li class="navigation-list-item">
+          <li class="navigation-list-item active">
 
             
             <a href="/documentation/" class="navigation-list-link">documentation</a>
@@ -491,9 +491,9 @@
                   
                 
                   
-                    <li class="navigation-list-item ">
+                    <li class="navigation-list-item  active">
                       
-                      <a href="/documentation/python/" class="navigation-list-link">python</a>
+                      <a href="/documentation/python/" class="navigation-list-link active">python</a>
                       
                         
                         <ul class="navigation-list-child-list">
@@ -867,14 +867,185 @@
       <div class="main-content">
         
           
+            <nav class="breadcrumb-nav">
+              <ol class="breadcrumb-nav-list">
+                
+                  <li class="breadcrumb-nav-list-item"><a href="/documentation/">documentation</a></li>
+                
+                <li class="breadcrumb-nav-list-item"><span>python</span></li>
+              </ol>
+            </nav>
+          
         
         <div class="page-content">
-          <p>webweb now renders with canvas! It’s faster and able to support larger networks.</p>
+          <h1 class="page-heading">python</h1><p>full documentation for the python code.</p>
 
-<p>Legends are also labeled with what they make legendary now.</p>
+<hr />
+
+<p>you interact with webweb via the <code class="highlighter-rouge">webweb.Web</code> object, which has the following attributes:</p>
+
+<ul>
+  <li>display: dictionary of webweb display parameters; see the <a href="/documentation/display/">display</a> documentation</li>
+  <li>networks: a dictionary of <code class="highlighter-rouge">webweb.Network</code> objects</li>
+</ul>
+
+<p>a python <code class="highlighter-rouge">webweb.Network</code> object has the following attributes:</p>
+
+<ul>
+  <li>layers: a list of dictionaries with the following attributes:</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="err">'edgeList'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">.</span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
+    </span><span class="err">'nodes'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">'key</span><span class="mi">1</span><span class="err">'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="err">'attribute</span><span class="mi">1</span><span class="err">'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">value</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="err">'attribute</span><span class="mi">2</span><span class="err">'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">value</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">'metadata'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">'attribute</span><span class="mi">3</span><span class="err">'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="err">'values'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
 
 
+          
+          <hr>
+          <h2 class="text-delta">Table of contents</h2>
+          
+          <ol>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li>
+                <a href="/docs/documentation/python/webweb.Web.html">webweb.Web</a>
+              </li>
+              
+            
+              
+            
+              
+              <li>
+                <a href="/docs/documentation/python/webweb.Web_show.html">webweb.Web.show</a>
+              </li>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li>
+                <a href="/docs/documentation/python/webweb.Web_save.html">webweb.Web.save</a>
+              </li>
+              
+            
+              
+            
+              
+            
+              
+              <li>
+                <a href="/docs/documentation/python/webweb.Network.html">webweb.Network</a>
+              </li>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li>
+                <a href="/docs/documentation/python/webweb.Network_add_layer.html">webweb.Network.add_layer</a>
+              </li>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </ol>
           
         </div>
       </div>

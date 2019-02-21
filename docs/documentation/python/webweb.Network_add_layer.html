@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <title>webweb canvas released - webweb</title>
+  <title>webweb.Network.add_layer - webweb</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
   
   <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
@@ -32,7 +32,7 @@
     
       
         
-          <li class="navigation-list-item active">
+          <li class="navigation-list-item">
 
             
             <a href="/404.html" class="navigation-list-link"></a>
@@ -278,7 +278,7 @@
     
       
         
-          <li class="navigation-list-item">
+          <li class="navigation-list-item active">
 
             
             <a href="/documentation/" class="navigation-list-link">documentation</a>
@@ -491,7 +491,7 @@
                   
                 
                   
-                    <li class="navigation-list-item ">
+                    <li class="navigation-list-item  active">
                       
                       <a href="/documentation/python/" class="navigation-list-link">python</a>
                       
@@ -557,8 +557,8 @@
                             
                           
                             
-                              <li class="navigation-list-item ">
-                                <a href="/docs/documentation/python/webweb.Network_add_layer.html" class="navigation-list-link">webweb.Network.add_layer</a>
+                              <li class="navigation-list-item  active">
+                                <a href="/docs/documentation/python/webweb.Network_add_layer.html" class="navigation-list-link active">webweb.Network.add_layer</a>
                               </li>
                             
                           
@@ -867,11 +867,76 @@
       <div class="main-content">
         
           
+            <nav class="breadcrumb-nav">
+              <ol class="breadcrumb-nav-list">
+                
+                  <li class="breadcrumb-nav-list-item"><a href="/documentation/">documentation</a></li>
+                  <li class="breadcrumb-nav-list-item"><a href="/documentation/python/">python</a></li>
+                
+                <li class="breadcrumb-nav-list-item"><span>webweb.Network.add_layer</span></li>
+              </ol>
+            </nav>
+          
         
         <div class="page-content">
-          <p>webweb now renders with canvas! It’s faster and able to support larger networks.</p>
+          <h1 class="page-heading">webweb.Network.add_layer</h1><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">webweb</span><span class="o">.</span><span class="n">Network</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">adjacency</span><span class="o">=</span><span class="p">[],</span> <span class="n">adjacency_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="p">{},</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">nx_G</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">gml_file</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div>
 
-<p>Legends are also labeled with what they make legendary now.</p>
+<p>adds a layer to the network.</p>
+
+<p>parameters:</p>
+<ul>
+  <li>adjacency: edge list or adjacency matrix</li>
+  <li>adjacency_type: string. ‘matrix’ or ‘edge list’</li>
+  <li>nodes: dict of node attribute dicts
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="err">'key</span><span class="mi">1</span><span class="err">'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">'attribute</span><span class="mi">1</span><span class="err">'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">'value</span><span class="mi">1</span><span class="err">'</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>metadata: dict of vectorized metadata and display information.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s">'attribute'</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="s">'values'</span> <span class="p">:</span> <span class="p">[</span> <span class="s">"attribute_value"</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+
+      <span class="c1"># `categories` only needs to be supplied if `values` holds
+</span>      <span class="c1"># categorical data that is represented by numbers.
+</span>      <span class="c1"># the values in the `values` array will be used as indexes to
+</span>      <span class="c1"># this array.
+</span>      <span class="s">'categories'</span> <span class="p">:</span> <span class="p">[</span><span class="s">"category1"</span><span class="p">,</span> <span class="s">"category2"</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+
+      <span class="c1"># `type` only needs to be set if you're displaying binary
+</span>      <span class="c1"># information with 0/1 instead of True/False 
+</span>      <span class="s">'type'</span> <span class="p">:</span> <span class="s">'binary'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>nx_G: a networkx graph.</li>
+  <li>gml_file: path to a gml file</li>
+</ul>
+
+<hr />
+
+<p>nodes which appear in both the adjacency and as keys in the <code class="highlighter-rouge">nodes</code>
+dictionary will be given the values of the attributes under their
+corresponding key in the <code class="highlighter-rouge">nodes</code> dictionary</p>
+
+<p><code class="highlighter-rouge">adjacency_type</code> only needs to be supplied if your adjacency is
+represented as a matrix and that matrix has 3 or fewer nodes</p>
+
+<p>call with at least one of:</p>
+<ul>
+  <li>adjacency</li>
+  <li>nodes</li>
+  <li>metadata</li>
+  <li>nx_G</li>
+  <li>gml_file</li>
+</ul>
 
 
 
