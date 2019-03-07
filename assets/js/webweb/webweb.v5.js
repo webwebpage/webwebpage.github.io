@@ -134,8 +134,9 @@ Webweb.prototype.getNodeIdMap = function(network) {
     }
 
     if (allInts(nodeNames)) {
-        nodeNames.sort();
+        nodeNames.sort(function(a, b){return a-b});
     }
+
 
     var unusedId = 0;
     var nodeIdMap = {};
@@ -457,8 +458,9 @@ Webweb.prototype.standardizeSourceMetadata = function(source) {
 
     // add the vectorized node metadata to the nodes
     for (var metadatum in source.metadata) {
-        for (var i in source.metadata[metadatum].values) {
-            this.nodes[i][metadatum] = source.metadata[metadatum].values[i];
+        var values = source.metadata[metadatum].values;
+        for (var i in values) {
+            this.nodes[i][metadatum] = values[i];
         }
     }
 
@@ -503,13 +505,17 @@ Webweb.prototype.setNodeMetadata = function() {
                 if (this.display.metadata !== undefined && this.display.metadata[key] !== undefined) {
                     var metadatumInfo = this.display.metadata[key];
 
+                    var value = this.nodes[i][key];
+
                     // if we have categories, change the node values here
                     if (metadatumInfo.categories !== undefined) {
-                        var nodeCategoryNumber = this.nodes[i][key];
-                        this.nodes[i][key] = metadatumInfo.categories[nodeCategoryNumber];
+                        if (isInt(value)) {
+                            var nodeCategoryNumber = this.nodes[i][key];
+                            this.nodes[i][key] = metadatumInfo.categories[nodeCategoryNumber];
+                        }
                     }
                     else if (metadatumInfo.type !== undefined && metadatumInfo.type == 'binary') {
-                        this.nodes[i][key] = this.nodes[i][key] ? true : false;
+                        this.nodes[i][key] = value ? true : false;
                     }
                 }
             }
@@ -1032,7 +1038,7 @@ function changeNetwork(networkName) {
     networkSelect.value = networkName;
 
     webweb.display.networkName = networkName;
-    displayNetwork();
+    changeLayer(0);
 }
 function changeSizes(sizeBy) {
     webweb.display.sizeBy = sizeBy;
@@ -1163,11 +1169,13 @@ function getBinaryValues(type) {
 }
 function toggleLinkWidthScaling(checked) {
     var range = checked ? [0.5, 4] : [1, 1];
+    webweb.display.scaleLinkWidth = checked;
     webweb.scales.links.width.range(range);
     webweb.canvas.redraw();
 }
 function toggleLinkOpacityScaling(checked) {
     var range = checked ? [0.4, 0.9] : [1, 1];
+    webweb.display.scaleLinkOpacity = checked;
     webweb.scales.links.opacity.range(range);
     webweb.canvas.redraw();
 }
@@ -1334,21 +1342,29 @@ Legend.prototype.drawLegendLabel = function(pushDown) {
     webweb.legendText.push(text);
 }
 Legend.prototype.drawLegendText = function(pushDown, pushRight) {
+    var valuesCount = this.values.length;
     this.text.forEach(function(d, i) {
-        var text = new Text(d, pushRight, pushDown(i) + 3.5, "12px");
-        webweb.legendText.push(text);
+        // only draw text for as many values as there are
+        if (i < valuesCount) {
+            var text = new Text(d, pushRight, pushDown(i) + 3.5, "12px");
+            webweb.legendText.push(text);
+        }
     });
 }
 Legend.prototype.drawLegendValues = function(pushDown, pushRight, sizeFunction, colorFunction) {
+    var textCount = this.text.length;
     this.values.forEach(function(d, i){
-        var node = new Node(-1);
-        node.fixedRadius = sizeFunction(d);
-        node.x = pushRight;
-        node.y = pushDown(i);
-        node.__scaledColor = colorFunction(i);
-        node.nonInteractive = true;
+        // only draw text for as many values as there are
+        if (i < textCount) {
+            var node = new Node(-1);
+            node.fixedRadius = sizeFunction(d);
+            node.x = pushRight;
+            node.y = pushDown(i);
+            node.__scaledColor = colorFunction(i);
+            node.nonInteractive = true;
 
-        webweb.legendNodes.push(node);
+            webweb.legendNodes.push(node);
+        }
     });
 }
 Legend.prototype.makeBinaryLegend = function() {
