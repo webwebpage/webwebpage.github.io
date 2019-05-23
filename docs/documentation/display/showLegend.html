@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <title>radius - webweb</title>
+  <title>showLegend - webweb</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
   
   <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
@@ -462,8 +462,8 @@
                             
                           
                             
-                              <li class="navigation-list-item  active">
-                                <a href="/docs/documentation/display/radius.html" class="navigation-list-link active">radius</a>
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/radius.html" class="navigation-list-link">radius</a>
                               </li>
                             
                           
@@ -480,8 +480,8 @@
                             
                           
                             
-                              <li class="navigation-list-item ">
-                                <a href="/docs/documentation/display/showLegend.html" class="navigation-list-link">showLegend</a>
+                              <li class="navigation-list-item  active">
+                                <a href="/docs/documentation/display/showLegend.html" class="navigation-list-link active">showLegend</a>
                               </li>
                             
                           
@@ -907,7 +907,7 @@
                   <li class="breadcrumb-nav-list-item"><a href="/documentation/">documentation</a></li>
                   <li class="breadcrumb-nav-list-item"><a href="/documentation/display/">display</a></li>
                 
-                <li class="breadcrumb-nav-list-item"><span>radius</span></li>
+                <li class="breadcrumb-nav-list-item"><span>showLegend</span></li>
               </ol>
             </nav>
           
@@ -925,7 +925,7 @@
 
 <div id="example-visualization" style="width: 100%"></div>
 <script type="text/javascript">
-    var wwdata = {"display":{"radius":20},"networks":{"webweb":{"layers":[{"edgeList":[[0,1],[1,2],[2,3],[3,4],[4,5]],"metadata":null,"nodes":{}}]}},"title":"webweb"};
+    var wwdata = {"display":{"colorBy":"degree","showLegend":false,"sizeBy":"degree"},"networks":{"webweb":{"layers":[{"edgeList":[[0,1],[0,2],[0,3],[0,4],[0,5]],"metadata":null,"nodes":{}}]}},"title":"webweb"};
     wwdata.display.attachWebwebToElementWithId = "example-visualization";
 
     
@@ -947,11 +947,10 @@
 }
 </style>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="err">positive</span><span class="w"> </span><span class="err">non-zero</span><span class="w"> </span><span class="err">float</span><span class="w">
-</span><span class="err">synonyms</span><span class="p">:</span><span class="w"> </span><span class="err">r</span><span class="w">
-</span><span class="err">default</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="w">
+</span><span class="err">default</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></code></pre></div></div>
-<p>we can change the radius of the nodes by setting the <code class="highlighter-rouge">display.radius</code> parameter.</p>
+<p>If <code class="highlighter-rouge">true</code>, webweb will display a legend describing how nodes are colored and sized.</p>
 
 <p>showing: 
 <span class="custom-dropdown">
@@ -964,10 +963,14 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">webweb</span> <span class="kn">import</span> <span class="n">Web</span>
 
 <span class="c1"># Instantiate webweb object
-</span><span class="n">web</span> <span class="o">=</span> <span class="n">Web</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+</span><span class="n">web</span> <span class="o">=</span> <span class="n">Web</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
 
-<span class="c1"># make nodes really big
-</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># size and color by degree
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">sizeBy</span> <span class="o">=</span> <span class="s">'degree'</span>
+<span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">colorBy</span> <span class="o">=</span> <span class="s">'degree'</span>
+
+<span class="c1"># hide webweb's legend (it defaults to being shown)
+</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">showLegend</span> <span class="o">=</span> <span class="bp">False</span>
 
 <span class="c1"># show the visualization
 </span><span class="n">web</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -975,7 +978,9 @@
 <div class="select-code-block example-code-switcher json-code-block"></div>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+        </span><span class="s2">"colorBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"degree"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"showLegend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sizeBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"degree"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"networks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"webweb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -987,19 +992,19 @@
                             </span><span class="mi">1</span><span class="w">
                         </span><span class="p">],</span><span class="w">
                         </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
                             </span><span class="mi">2</span><span class="w">
                         </span><span class="p">],</span><span class="w">
                         </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
                             </span><span class="mi">3</span><span class="w">
                         </span><span class="p">],</span><span class="w">
                         </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
                             </span><span class="mi">4</span><span class="w">
                         </span><span class="p">],</span><span class="w">
                         </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
                             </span><span class="mi">5</span><span class="w">
                         </span><span class="p">]</span><span class="w">
                     </span><span class="p">],</span><span class="w">
