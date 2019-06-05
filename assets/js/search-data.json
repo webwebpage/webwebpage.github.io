@@ -50,31 +50,31 @@
   },
   "7": {
     "id": "7",
+    "title": "changelog",
+    "content": "20190605 - 0.0.33  automated testing for python  node names will be displayed at a slightly higher simulation temperature20190526 - 0.0.32  added display.showLegend which defaults to = True. If True, will draw the legend.20190206 - canvas!  webweb now renders with canvas! It’s faster and able to support larger networks.  Legends are labeled with what they make legendary.20190130 - 0.0.5  Documentation is live!  webweb is on pip!  matlab is completely rewritten!  webweb visualizations have no dependencies  drag&amp;amp;drop and json saving removed  all node names can be shown  interactive menus can be hidden  binary colors and sizes can be inverted  nodes can be strings (python)  webweb is responsive (mostly)20181125 - 0.0.4Merged fork from Hunter Wapman  supports multi-layer networks  all display parameters can be set  saveable json  color palette can be changed20180123 - 0.0.3.4Merged a fork from Michael Iuzzolino  SVG saving  drag and drop file loading  standard file loading.20150522 - 0.0.3.3  pause/play node movement20140516 - 0.0.3.2  link opacity defaults to checked  charge selection bugfix  link strength can be changed  webweb now runs on Windows20131222 - 0.0.3.1  accepts a single sparse matrix as input20131010 - webweb is featured in a publication!in PLoS Computational Biology, along with interactive versions of all published figures.20130826 - 0.0.3a new and improved version of webweb!2013087 - 0.0.3a new and improved version of webweb!",
+    "url": "/changelog/",
+    "relUrl": "/changelog/"
+  },
+  "8": {
+    "id": "8",
     "title": "charge",
     "content": "type: positive non-zero integersynonyms: cdefault: 60we can change how much nodes repulse each other.the greater the value for charge, the more nodes will repel each other.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]])# could also set web.display.cweb.display.charge = 150# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;charge&quot;: 150    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1                        ],                        [                            1,                            2                        ],                        [                            2,                            3                        ],                        [                            3,                            4                        ],                        [                            4,                            5                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {}                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/charge.html",
     "relUrl": "/docs/documentation/display/charge.html"
   },
-  "8": {
-    "id": "8",
+  "9": {
+    "id": "9",
     "title": "colorBy",
     "content": "type: stringdefault: 'none'we can color nodes by a metadata attribute by setting the colorBy parameter to that attribute’s name.any metadata attribute can be used to compute node size.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]], display={    'metadata' : {        'emotion' : {            'values' : ['happy', 'sad', 'angry', 'sad', 'happy', 'sad']        }    }})# use the 'emotion' attribute to color nodesweb.display.colorBy = 'emotion'# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;colorBy&quot;: &quot;emotion&quot;,        &quot;metadata&quot;: {            &quot;emotion&quot;: {                &quot;values&quot;: [                    &quot;happy&quot;,                    &quot;sad&quot;,                    &quot;angry&quot;,                    &quot;sad&quot;,                    &quot;happy&quot;,                    &quot;sad&quot;                ]            }        }    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1                        ],                        [                            1,                            2                        ],                        [                            2,                            3                        ],                        [                            3,                            4                        ],                        [                            4,                            5                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {}                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/colorBy.html",
     "relUrl": "/docs/documentation/display/colorBy.html"
   },
-  "9": {
-    "id": "9",
+  "10": {
+    "id": "10",
     "title": "colorPalette",
     "content": "type: stringdefault: 'Set1'we can change the color palette webweb uses to color categorical nodes with the colorPalette parameter.showing:                 python            jsonfrom webweb import Web# Instantiate webweb objectweb = Web([[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]], display={    'metadata' : {        'emotion' : {            'values' : ['happy', 'sad', 'angry', 'sad', 'happy', 'sad']        }    }})# use the 'emotion' attribute to color nodesweb.display.colorBy = 'emotion'# set the color palette to use# this value will be used as when we are `display.colorBy` references a# categorical or binary attributeweb.display.colorPalette = 'Set3'# show the visualizationweb.show(){    &quot;display&quot;: {        &quot;colorBy&quot;: &quot;emotion&quot;,        &quot;colorPalette&quot;: &quot;Set3&quot;,        &quot;metadata&quot;: {            &quot;emotion&quot;: {                &quot;values&quot;: [                    &quot;happy&quot;,                    &quot;sad&quot;,                    &quot;angry&quot;,                    &quot;sad&quot;,                    &quot;happy&quot;,                    &quot;sad&quot;                ]            }        }    },    &quot;networks&quot;: {        &quot;webweb&quot;: {            &quot;layers&quot;: [                {                    &quot;edgeList&quot;: [                        [                            0,                            1                        ],                        [                            1,                            2                        ],                        [                            2,                            3                        ],                        [                            3,                            4                        ],                        [                            4,                            5                        ]                    ],                    &quot;metadata&quot;: null,                    &quot;nodes&quot;: {}                }            ]        }    },    &quot;title&quot;: &quot;webweb&quot;}",
     "url": "/docs/documentation/display/colorPalette.html",
     "relUrl": "/docs/documentation/display/colorPalette.html"
-  },
-  "10": {
-    "id": "10",
-    "title": "development",
-    "content": "",
-    "url": "/development/",
-    "relUrl": "/development/"
   },
   "11": {
     "id": "11",
