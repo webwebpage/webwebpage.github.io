@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <title>showLegend - webweb</title>
+  <title>webweb.Web.save - webweb</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
   
   <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
@@ -312,7 +312,7 @@
                   
                 
                   
-                    <li class="navigation-list-item  active">
+                    <li class="navigation-list-item ">
                       
                       <a href="/documentation/display/" class="navigation-list-link">display</a>
                       
@@ -480,8 +480,8 @@
                             
                           
                             
-                              <li class="navigation-list-item  active">
-                                <a href="/docs/documentation/display/showLegend.html" class="navigation-list-link active">showLegend</a>
+                              <li class="navigation-list-item ">
+                                <a href="/docs/documentation/display/showLegend.html" class="navigation-list-link">showLegend</a>
                               </li>
                             
                           
@@ -509,7 +509,7 @@
                   
                 
                   
-                    <li class="navigation-list-item ">
+                    <li class="navigation-list-item  active">
                       
                       <a href="/documentation/python/" class="navigation-list-link">python</a>
                       
@@ -553,8 +553,8 @@
                             
                           
                             
-                              <li class="navigation-list-item ">
-                                <a href="/docs/documentation/python/webweb.Web_save.html" class="navigation-list-link">webweb.Web.save</a>
+                              <li class="navigation-list-item  active">
+                                <a href="/docs/documentation/python/webweb.Web_save.html" class="navigation-list-link active">webweb.Web.save</a>
                               </li>
                             
                           
@@ -905,118 +905,23 @@
               <ol class="breadcrumb-nav-list">
                 
                   <li class="breadcrumb-nav-list-item"><a href="/documentation/">documentation</a></li>
-                  <li class="breadcrumb-nav-list-item"><a href="/documentation/display/">display</a></li>
+                  <li class="breadcrumb-nav-list-item"><a href="/documentation/python/">python</a></li>
                 
-                <li class="breadcrumb-nav-list-item"><span>showLegend</span></li>
+                <li class="breadcrumb-nav-list-item"><span>webweb.Web.save</span></li>
               </ol>
             </nav>
           
         
         <div class="page-content">
-          <link rel="stylesheet" href="/assets/css/webweb/style.css" />
-
-<script type="text/javascript" src="/assets/js/webweb/Blob.js"></script>
-
-<script type="text/javascript" src="/assets/js/webweb/colors.js"></script>
-
-<script type="text/javascript" src="/assets/js/webweb/d3.v5.min.js"></script>
-
-<script type="text/javascript" src="/assets/js/webweb/FileSaver.min.js"></script>
-
-<div id="example-visualization" style="width: 100%"></div>
-<script type="text/javascript">
-    var wwdata = {"display":{"colorBy":"degree","showLegend":false,"sizeBy":"degree"},"networks":{"webweb":{"layers":[{"edgeList":[[0,1],[0,2],[0,3],[0,4],[0,5]],"metadata":null,"nodes":{}}]}},"title":"webweb"};
-    wwdata.display.attachWebwebToElementWithId = "example-visualization";
-
-    
-
-    
-    wwdata.display.w = 250;
-    
-    
-    wwdata.display.h = 250;
-    
-</script>
-
-<p><br />
-<script type="text/javascript" src="/assets/js/webweb/webweb.v5.js?1560873185840009000"></script></p>
-<style>
-#webweb-visualization-container {
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
-}
-</style>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="w">
-</span><span class="err">default</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></code></pre></div></div>
-<p>If <code class="highlighter-rouge">true</code>, webweb will display a legend describing how nodes are colored and sized.</p>
-
-<p>showing: 
-<span class="custom-dropdown">
-    <select onchange="changeCodeDisplay(this, 'example-code-switcher')">
-            <option value="python">python</option>
-            <option value="json">json</option></select>
-</span></p>
-
-<div class="select-code-block example-code-switcher python-code-block select-code-block-visible"></div>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">webweb</span> <span class="kn">import</span> <span class="n">Web</span>
-
-<span class="c1"># Instantiate webweb object
-</span><span class="n">web</span> <span class="o">=</span> <span class="n">Web</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
-
-<span class="c1"># size and color by degree
-</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">sizeBy</span> <span class="o">=</span> <span class="s">'degree'</span>
-<span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">colorBy</span> <span class="o">=</span> <span class="s">'degree'</span>
-
-<span class="c1"># hide webweb's legend (it defaults to being shown)
-</span><span class="n">web</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">showLegend</span> <span class="o">=</span> <span class="bp">False</span>
-
-<span class="c1"># show the visualization
-</span><span class="n">web</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+          <h1 class="page-heading">webweb.Web.save</h1><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">webweb</span><span class="o">.</span><span class="n">Web</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </code></pre></div></div>
-<div class="select-code-block example-code-switcher json-code-block"></div>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"colorBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"degree"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"showLegend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sizeBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"degree"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"networks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"webweb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"layers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"edgeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="mi">1</span><span class="w">
-                        </span><span class="p">],</span><span class="w">
-                        </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="mi">2</span><span class="w">
-                        </span><span class="p">],</span><span class="w">
-                        </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="mi">3</span><span class="w">
-                        </span><span class="p">],</span><span class="w">
-                        </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="mi">4</span><span class="w">
-                        </span><span class="p">],</span><span class="w">
-                        </span><span class="p">[</span><span class="w">
-                            </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="mi">5</span><span class="w">
-                        </span><span class="p">]</span><span class="w">
-                    </span><span class="p">],</span><span class="w">
-                    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webweb"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
+
+<p>saves the webweb visualization to the specified path</p>
+
+<p>parameters:</p>
+<ul>
+  <li>path: the path to save to.</li>
+</ul>
 
 
 
